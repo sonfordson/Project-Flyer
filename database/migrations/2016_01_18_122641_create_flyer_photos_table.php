@@ -15,7 +15,7 @@ class CreateFlyerPhotosTable extends Migration
         Schema::create('flyer_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('flyer_id')->unsigned();
-            $table->string('photo');
+            $table->string('path');
 
 
             $table->foreign('flyer_id')
