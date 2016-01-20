@@ -5,7 +5,7 @@
   <hr>
 
 <div class="row">
-        <form method="POST" ACTION="/flyers" enctype="multipart/form-data" class="col-md-6">
+        <form method="POST" action="/flyers" enctype="multipart/form-data" class="col-md-6">
             {{ csrf_field() }}
           @include('flyers.form')
             @if (count($errors) > 0)

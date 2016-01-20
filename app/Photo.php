@@ -4,12 +4,15 @@ namespace App;
 use App\Flyer;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Photo extends Model
 {
     protected $table ='flyer_photos';
 
-    protected $fillable =['photo'];
+    protected $fillable =['path'];
+
+    protected $baseDir = '../flyers/photos';
 
     public function flyer()
     {
@@ -17,4 +20,17 @@ class Photo extends Model
         return $this->belongsTo(Flyer::class);
     }
 
+    public static function fromForm(UploadedFile $file)
+    {
+        $photo = new static;
+
+        $name = time().$file->getClientOriginalName();
+
+        $photo->path = $photo->baseDir .'/'. $name;
+
+        $file->move($photo->baseDir, $name);
+
+
+        return $photo;
+    }
 }
