@@ -30,7 +30,7 @@ class FlyersController extends Controller
      */
     public function create()
     {
-       flash()->overlay('Welcome Aboard', 'This is the message.');
+        flash()->overlay('Welcome Aboard', 'This is the message.');
         return view('flyers.create');
     }
 
@@ -55,9 +55,12 @@ class FlyersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($zip, $street)
     {
-        //
+
+        $flyer = Flyer::locatedAt($zip, $street)->first();
+        return view('flyers.show',compact('flyer'));
+
     }
 
     /**
