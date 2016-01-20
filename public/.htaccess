@@ -5,8 +5,12 @@
 
     RewriteEngine On
 
+<<<<<<< HEAD
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
+=======
+    # Redirect Trailing Slashes...
+>>>>>>> 44993b7528930e302201e0bdf122e0afa196aa41
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
     # Handle Front Controller...
